@@ -18,6 +18,7 @@ namespace ListaArtesanal.Models
             hojaDerecha = null;
             linea = 0;
             nombre = ""; 
+            //Martin güicoy
         }
     }
 }
