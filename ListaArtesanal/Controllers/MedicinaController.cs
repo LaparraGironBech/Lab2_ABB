@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using ListaArtesanal.Models;
+
 namespace ListaArtesanal.Controllers
 {
     
@@ -28,12 +29,49 @@ namespace ListaArtesanal.Controllers
         {
             return View();
         }
+        public IActionResult totalpedidos()
+        {
+            return View(Singleton.Instance.ClientesList);
+            
+        }
         public IActionResult IndexVer()
         {
             return View(ListMedicina);
         }
+        // GET: MedicinaController/Hacerpedido
+        public ActionResult Hacerpedido()
+        {
+            return View();
+
+        }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Hacerpedido(IFormCollection collection)
+        {
+            try
+            {
+                var newPedido = new Models.Clientesdata
+                {
+                    NIT = Convert.ToInt32(collection["NIT"]),
+                    Cantidadmedicamento = Convert.ToInt32(collection["NIT"]),
+                    Name = collection["Name"],
+                    Apellido = collection["Apellido"],
+                    NombreMedicamento = collection["NombreMedicamento"]
+
+                };
+                Singleton.Instance.ClientesList.Add(newPedido);
+                return RedirectToAction(nameof(totalpedidos));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        [HttpPost]
+        
         public IActionResult Index(IFormFile postedFile)
         {
             if (postedFile != null)
