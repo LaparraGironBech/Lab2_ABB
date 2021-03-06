@@ -122,12 +122,29 @@ namespace ListaArtesanal.Controllers
                 {
                     ArbolBinario.insertarArbol(ListMedicina.ObtenerPos(i).nombre, i + 1);
                 }
+
+                string nn = "Cd";
+                ArbolBinario.Busqueda_PreOrden(ArbolBinario.raiz, nn);
+                if (ArbolBinario.comprobador==true)
+                {
+                    Console.WriteLine("Si hay, y se recorre" + ArbolBinario.cantT);
+                }
+                else
+                {
+                    Console.WriteLine("No se encontró, se recorre" + ArbolBinario.cantidadRecorridos);
+                }
                 return RedirectToAction(nameof(IndexVer));
             }
             
 
             return View();
           
+        }
+
+        public IActionResult Busqueda()
+        {
+
+            return View();
         }
     }
 }

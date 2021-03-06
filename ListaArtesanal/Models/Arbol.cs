@@ -7,11 +7,17 @@ namespace ListaArtesanal.Models
 {
     public class Arbol
     {
+        public int id {get; set; }
+        public int cantT { get; set; }
+        public bool comprobador { get; set; }
+        public int cantidadRecorridos { get; set; }
         public Hoja raiz { get; set; }
         public int cantidadHojas { get; set; }
+        
 
         public Arbol()
         {
+            comprobador = false;
             raiz = null;
         }
 
@@ -56,6 +62,24 @@ namespace ListaArtesanal.Models
                 //adfafasdfas
                 //Jason se la come
             }            
+        }
+
+        public void Busqueda_PreOrden(Hoja raiz, string nombreProducto)
+        {
+            cantidadRecorridos++;
+            if (raiz.nombre == nombreProducto)
+            {
+                id = raiz.linea;
+                comprobador = true;
+                cantT = cantidadRecorridos;                
+            }
+            else
+            {
+                if (raiz.hojaIzquierda != null)
+                    Busqueda_PreOrden(raiz.hojaIzquierda, nombreProducto);
+                if (raiz.hojaDerecha != null)
+                    Busqueda_PreOrden(raiz.hojaDerecha, nombreProducto);
+            }           
         }
        
     }
