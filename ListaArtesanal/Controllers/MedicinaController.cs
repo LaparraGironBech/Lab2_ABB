@@ -16,7 +16,9 @@ namespace ListaArtesanal.Controllers
     public class MedicinaController : Controller
     {
         ListaMedicamento ListMedicina = new ListaMedicamento();
-        Arbol ArbolBinario = new Arbol();
+        Arbol<MedicamentoIndice> ArbolBinario = new Arbol<MedicamentoIndice>();
+       // Arbol<string> Arbol2 = new Arbol<string>();
+       // Arbol<int> Arbol3 = new Arbol<int>();
       
        
         //Cargar archivo CSV

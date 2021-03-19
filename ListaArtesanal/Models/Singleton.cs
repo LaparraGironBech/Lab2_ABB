@@ -9,6 +9,7 @@ namespace ListaArtesanal.Models
     {
         private readonly static Singleton _instance = new Singleton();
         public List<Clientesdata> ClientesList;
+
         private Singleton()
         {
             ClientesList = new List<Clientesdata>();
@@ -21,5 +22,10 @@ namespace ListaArtesanal.Models
                 return _instance;
             }
         }
+
+
+
+
+
     }
 }
