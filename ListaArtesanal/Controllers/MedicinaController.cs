@@ -15,8 +15,7 @@ namespace ListaArtesanal.Controllers
     
     public class MedicinaController : Controller
     {
-        ListaMedicamento ListMedicina = new ListaMedicamento();
-        Arbol<MedicamentoIndice> ArbolBinario = new Arbol<MedicamentoIndice>();
+           
        // Arbol<string> Arbol2 = new Arbol<string>();
        // Arbol<int> Arbol3 = new Arbol<int>();
       
@@ -38,7 +37,7 @@ namespace ListaArtesanal.Controllers
         }
         public IActionResult IndexVer()
         {
-            return View(ListMedicina);
+            return View();
         }
         // GET: MedicinaController/Hacerpedido
         public ActionResult Hacerpedido()
@@ -62,7 +61,7 @@ namespace ListaArtesanal.Controllers
                     NombreMedicamento = collection["NombreMedicamento"]
 
                 };
-                Singleton.Instance.ClientesList.Add(newPedido);
+                //Singleton.Instance.ClientesList.AgregarInicio(newPedido);
                 return RedirectToAction(nameof(totalpedidos));
             }
             catch
@@ -147,7 +146,7 @@ namespace ListaArtesanal.Controllers
                                     }
                                 }
                                 Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3], NodoM[4],Convert.ToInt32(NodoM[5]));
-                                ListMedicina.AgregarFinal(NodoMedicamento);
+                                Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
 
                                
 
@@ -160,7 +159,7 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    ArbolBinario.insertarArbol(ListMedicina.ObtenerPos(i).nombre, i + 1);
+                    Singleton.Instance.ArbolBinario.insertarArbol(Singleton.Instance.ClientesList.ObtenerPos(i).nombre, i + 1);
                 }
                 return RedirectToAction(nameof(IndexVer));
             }

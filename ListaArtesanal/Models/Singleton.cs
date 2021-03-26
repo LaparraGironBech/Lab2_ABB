@@ -8,11 +8,13 @@ namespace ListaArtesanal.Models
     public class Singleton
     {
         private readonly static Singleton _instance = new Singleton();
-        public List<Clientesdata> ClientesList;
+        public ListaMedicamento ClientesList;
+        public Arbol<MedicamentoIndice> ArbolBinario = new Arbol<MedicamentoIndice>();
 
         private Singleton()
         {
-            ClientesList = new List<Clientesdata>();
+            ClientesList = new ListaMedicamento();
+            ArbolBinario = new Arbol<MedicamentoIndice>();
         }
 
         public static Singleton Instance
