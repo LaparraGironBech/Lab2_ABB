@@ -30,7 +30,7 @@ namespace ListaArtesanal.Controllers
         }
         public IActionResult IndexVer()
         {
-            return View(ListMedicina);
+            return View();
         }
 
         [HttpPost]
