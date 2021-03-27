@@ -142,7 +142,7 @@ namespace ListaArtesanal.Controllers
 
                                     }
                                 }
-                                Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3], NodoM[4],Convert.ToInt32(NodoM[5]));                                
+                                Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3],Convert.ToDouble(NodoM[4].Remove(0,1)),Convert.ToInt32(NodoM[5]));                                
                                 Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
                                 MedicamentoIndice NodoIndice = new MedicamentoIndice(NodoM[1], Convert.ToInt32(NodoM[0]));
                                 Singleton.Instance.ClientesListIndice.AgregarFinal(NodoIndice);

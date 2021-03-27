@@ -13,12 +13,12 @@ namespace ListaArtesanal.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string Casa_Productora { get; set; }
-        public string Precio { get; set; } //aún tengo dudas
+        public double Precio { get; set; } //aún tengo dudas
         public int Existencia { get; set; }
       //  public Medicamento Siguiente { get; set; }
 
         //Método constructor
-        public Medicamento(int id, string nombre, string descripcion, string casa_Productora, string precio, int existencia)
+        public Medicamento(int id, string nombre, string descripcion, string casa_Productora, double precio, int existencia)
         {
             this.id = id;
             this.nombre = nombre;
