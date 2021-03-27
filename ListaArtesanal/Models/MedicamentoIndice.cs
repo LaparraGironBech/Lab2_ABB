@@ -14,5 +14,10 @@ namespace ListaArtesanal.Models
         }
         public int linea { get; set; } 
         public string nombre { get; set; }
+
+        public MedicamentoIndice()
+        {
+           
+        }
     }
 }

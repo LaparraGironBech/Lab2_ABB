@@ -15,9 +15,10 @@ namespace ListaArtesanal.Controllers
     
     public class MedicinaController : Controller
     {
-           
-       // Arbol<string> Arbol2 = new Arbol<string>();
-       // Arbol<int> Arbol3 = new Arbol<int>();
+
+        // Arbol<string> Arbol2 = new Arbol<string>();
+        // Arbol<int> Arbol3 = new Arbol<int>();
+        MedicamentoIndice temporal = new MedicamentoIndice();
       
        
         //Cargar archivo CSV
@@ -159,7 +160,10 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    Singleton.Instance.ArbolBinario.insertarArbol(Singleton.Instance.ClientesList.ObtenerPos(i).nombre, i + 1);
+                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).nombre;
+                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).id;
+                    Singleton.Instance.ArbolBinario.insertArbol(temporal);
+                    
                 }
                 return RedirectToAction(nameof(IndexVer));
             }
