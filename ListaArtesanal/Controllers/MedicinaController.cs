@@ -17,8 +17,7 @@ namespace ListaArtesanal.Controllers
     {
 
         // Arbol<string> Arbol2 = new Arbol<string>();
-        // Arbol<int> Arbol3 = new Arbol<int>();
-        MedicamentoIndice temporal = new MedicamentoIndice();
+        // Arbol<int> Arbol3 = new Arbol<int>();        
 
       
        
@@ -150,7 +149,9 @@ namespace ListaArtesanal.Controllers
                                     }
                                 }
                                 Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3], NodoM[4],Convert.ToInt32(NodoM[5]));                                
-                                Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);                                  
+                                Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
+                                MedicamentoIndice NodoIndice = new MedicamentoIndice(NodoM[1], Convert.ToInt32(NodoM[0]));
+                                Singleton.Instance.ClientesListIndice.AgregarFinal(NodoIndice);
                             }
                         }
                     }
@@ -160,14 +161,7 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).Data.nombre;
-                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).Data.id;
-                    Singleton.Instance.ArbolBinario.insertArbol(temporal);
-                {       
-                    
-                    Singleton.Instance.Lista.Add();
-                    Singleton.Instance.ArbolBinario.insertArbol();
-                    
+                    Singleton.Instance.ArbolBinario.insertArbol(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
                 }
                 return RedirectToAction(nameof(IndexVer));
             }
