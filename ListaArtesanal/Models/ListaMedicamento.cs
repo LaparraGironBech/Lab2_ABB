@@ -5,96 +5,124 @@ using System.Threading.Tasks;
 
 namespace ListaArtesanal.Models
 {
-    public class ListaMedicamento
+    public class ListaGenerics <T>
     {
-        public Medicamento PrimerMedicamento;
-        public Medicamento UltimoMedicamento;
+        public class Nodo
+        {
+            public Nodo(T t)
+            {
+                Siguiente = null;
+                data = t;
+            }
+            private Nodo Siguiente;
+
+            public Nodo siguiente
+            {
+                get { return Siguiente; }
+                set { Siguiente = value; }
+            }
+
+            private T data;
+            public T Data
+            {
+                get { return data; }
+                set { data = value; }
+            }
+        }
+        //Declaraci´´on de los nodos y cantidades
         public int Cantidad;
-        
+        public Nodo PrimerNodo;
+        public Nodo UltimoNodo;
+
+
 
         //Metodos
-        public void AgregarInicio(Medicamento Nom1 )
+        public void AgregarInicio(T t)
         {
-            if (Cantidad==0)
+            Nodo Nom1 = new Nodo(t);
+            if (Cantidad == 0)
             {
-                PrimerMedicamento = Nom1;
-                UltimoMedicamento = Nom1;
+                PrimerNodo = Nom1;
+                UltimoNodo = Nom1;
             }
             else
             {
-                Medicamento temp = Nom1;
-                temp.Siguiente = PrimerMedicamento;
-                PrimerMedicamento = temp;
+                Nodo temp = Nom1;
+                temp.siguiente = PrimerNodo;
+                PrimerNodo = temp;
+
             }
             Cantidad++;
         }
 
-        public void AgregarFinal(Medicamento Nom2)
+        public void AgregarFinal(T t)
         {
-            if(Cantidad==0)
+            Nodo Nom2 = new Nodo(t);
+            if (Cantidad == 0)
             {
-                AgregarInicio(Nom2);
+                AgregarInicio(t);
             }
             else
             {
-                UltimoMedicamento.Siguiente = Nom2;
-                UltimoMedicamento = Nom2;
+                UltimoNodo.siguiente = Nom2;
+                UltimoNodo = Nom2;
             }
             Cantidad++;
         }
 
-        public void AgregarPos(int pos, Medicamento Nom3)
+        public void AgregarPos(int pos, T t)
         {
-            if(Cantidad==0 || pos==0)
+            Nodo Nom3 = new Nodo(t);
+            if (Cantidad == 0 || pos == 0)
             {
-                AgregarInicio(Nom3);
+                AgregarInicio(t);
             }
             else
             {
-                Medicamento pretemp = PrimerMedicamento;
-                Medicamento temp = Nom3;
+                Nodo pretemp = PrimerNodo;
+                Nodo temp = Nom3;
                 int cont = 0;
 
-                while(cont < (pos-1))
+                while (cont < (pos - 1))
                 {
-                    pretemp = pretemp.Siguiente;
+                    pretemp = pretemp.siguiente;
                     cont++;
                 }
-                temp.Siguiente = pretemp.Siguiente;
-                pretemp.Siguiente = temp;
+                temp.siguiente = pretemp.siguiente;
+                pretemp.siguiente = temp;
                 Cantidad++;
             }
         }
 
-          
-        public Medicamento ObtenerInicio()
+
+        public Nodo ObtenerInicio()
         {
-            return PrimerMedicamento;
+            return PrimerNodo;
         }
 
-        public Medicamento ObtenerFinal()
+        public Nodo ObtenerFinal()
         {
-            return UltimoMedicamento;
+            return UltimoNodo;
         }
 
-        public Medicamento ObtenerPos(int Pos)
+        public Nodo ObtenerPos(int Pos)
         {
-            if(Cantidad== 0 ||Pos==0)
+            if (Cantidad == 0 || Pos == 0)
             {
                 return ObtenerInicio();
             }
             else
-                if(Pos>=Cantidad)
+                if (Pos >= Cantidad)
             {
                 return ObtenerFinal();
             }
             else
             {
-                Medicamento temp = PrimerMedicamento;
+                Nodo temp = PrimerNodo;
                 int cont = 0;
-                while(cont<Pos)
+                while (cont < Pos)
                 {
-                    temp = temp.Siguiente;
+                    temp = temp.siguiente;
                     cont++;
                 }
                 return temp;
@@ -102,6 +130,103 @@ namespace ListaArtesanal.Models
 
 
         }
-    
+
+        //Esta es la otra lista que no es generica---------------------------------------------------------->
+        //    public Medicamento PrimerMedicamento;
+        //    public Medicamento UltimoMedicamento;
+        //    public int Cantidad;
+
+
+        //    //Metodos
+        //    public void AgregarInicio(Medicamento Nom1 )
+        //    {
+        //        if (Cantidad==0)
+        //        {
+        //            PrimerMedicamento = Nom1;
+        //            UltimoMedicamento = Nom1;
+        //        }
+        //        else
+        //        {
+        //            Medicamento temp = Nom1;
+        //            temp.Siguiente = PrimerMedicamento;
+        //            PrimerMedicamento = temp;
+        //        }
+        //        Cantidad++;
+        //    }
+
+        //    public void AgregarFinal(Medicamento Nom2)
+        //    {
+        //        if(Cantidad==0)
+        //        {
+        //            AgregarInicio(Nom2);
+        //        }
+        //        else
+        //        {
+        //            UltimoMedicamento.Siguiente = Nom2;
+        //            UltimoMedicamento = Nom2;
+        //        }
+        //        Cantidad++;
+        //    }
+
+        //    public void AgregarPos(int pos, Medicamento Nom3)
+        //    {
+        //        if(Cantidad==0 || pos==0)
+        //        {
+        //            AgregarInicio(Nom3);
+        //        }
+        //        else
+        //        {
+        //            Medicamento pretemp = PrimerMedicamento;
+        //            Medicamento temp = Nom3;
+        //            int cont = 0;
+
+        //            while(cont < (pos-1))
+        //            {
+        //                pretemp = pretemp.Siguiente;
+        //                cont++;
+        //            }
+        //            temp.Siguiente = pretemp.Siguiente;
+        //            pretemp.Siguiente = temp;
+        //            Cantidad++;
+        //        }
+        //    }
+
+
+        //    public Medicamento ObtenerInicio()
+        //    {
+        //        return PrimerMedicamento;
+        //    }
+
+        //    public Medicamento ObtenerFinal()
+        //    {
+        //        return UltimoMedicamento;
+        //    }
+
+        //    public Medicamento ObtenerPos(int Pos)
+        //    {
+        //        if(Cantidad== 0 ||Pos==0)
+        //        {
+        //            return ObtenerInicio();
+        //        }
+        //        else
+        //            if(Pos>=Cantidad)
+        //        {
+        //            return ObtenerFinal();
+        //        }
+        //        else
+        //        {
+        //            Medicamento temp = PrimerMedicamento;
+        //            int cont = 0;
+        //            while(cont<Pos)
+        //            {
+        //                temp = temp.Siguiente;
+        //                cont++;
+        //            }
+        //            return temp;
+        //        }
+
+
+        //    }
+
     }
 }

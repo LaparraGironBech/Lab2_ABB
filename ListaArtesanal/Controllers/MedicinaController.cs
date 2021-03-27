@@ -163,8 +163,8 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).nombre;
-                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).id;
+                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).Data.nombre;
+                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).Data.id;
                     Singleton.Instance.ArbolBinario.insertArbol(temporal);
                     
                 }
