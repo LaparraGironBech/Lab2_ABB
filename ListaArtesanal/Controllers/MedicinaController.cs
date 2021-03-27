@@ -19,6 +19,7 @@ namespace ListaArtesanal.Controllers
         // Arbol<string> Arbol2 = new Arbol<string>();
         // Arbol<int> Arbol3 = new Arbol<int>();
         MedicamentoIndice temporal = new MedicamentoIndice();
+
       
        
         //Cargar archivo CSV

@@ -7,7 +7,7 @@ namespace ListaArtesanal.Models
 {
     public class Arbol<T> where T : IComparable
     {
-        public Hoja<T> raiz { get; set; }
+        public Hoja<T> raiz;
         public int cantidadHojas { get; set; }
 
         public Arbol()
@@ -32,7 +32,7 @@ namespace ListaArtesanal.Models
                 while (pivot != null)
                 {
                     ant = pivot;
-                    if (nuevahoja.value.CompareTo(pivot.value) > 0)
+                    if (value.CompareTo(pivot.value) > 0)
                     {
                         pivot = pivot.hojaDerecha;
                     }
@@ -41,7 +41,7 @@ namespace ListaArtesanal.Models
                         pivot = pivot.hojaIzquierda;
                     }
                 }
-                if (nuevahoja.value.CompareTo(ant.value) > 0)
+                if (value.CompareTo(ant.value) > 0)
                 {
                     ant.hojaDerecha = nuevahoja;
                 }
