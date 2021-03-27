@@ -40,6 +40,7 @@ namespace ListaArtesanal.Controllers
         public IActionResult IndexVer()
         {
             return View();
+
         }
         // GET: MedicinaController/Hacerpedido
         public ActionResult Hacerpedido()
@@ -70,6 +71,7 @@ namespace ListaArtesanal.Controllers
             {
                 return View();
             }
+
         }
 
 
@@ -157,6 +159,10 @@ namespace ListaArtesanal.Controllers
 
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
+                {
+                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).Data.nombre;
+                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).Data.id;
+                    Singleton.Instance.ArbolBinario.insertArbol(temporal);
                 {       
                     
                     Singleton.Instance.Lista.Add();
