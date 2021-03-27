@@ -147,11 +147,8 @@ namespace ListaArtesanal.Controllers
 
                                     }
                                 }
-                                Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3], NodoM[4],Convert.ToInt32(NodoM[5]));
-                                Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
-
-                               
-
+                                Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3], NodoM[4],Convert.ToInt32(NodoM[5]));                                
+                                Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);                                  
                             }
                         }
                     }
@@ -160,10 +157,10 @@ namespace ListaArtesanal.Controllers
 
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
-                {
-                    temporal.nombre = Singleton.Instance.ClientesList.ObtenerPos(i).nombre;
-                    temporal.linea = Singleton.Instance.ClientesList.ObtenerPos(i).id;
-                    Singleton.Instance.ArbolBinario.insertArbol(temporal);
+                {       
+                    
+                    Singleton.Instance.Lista.Add();
+                    Singleton.Instance.ArbolBinario.insertArbol();
                     
                 }
                 return RedirectToAction(nameof(IndexVer));
