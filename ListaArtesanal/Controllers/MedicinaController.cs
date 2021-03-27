@@ -14,13 +14,7 @@ namespace ListaArtesanal.Controllers
 {
     
     public class MedicinaController : Controller
-    {
-
-        // Arbol<string> Arbol2 = new Arbol<string>();
-        // Arbol<int> Arbol3 = new Arbol<int>();        
-
-      
-       
+    {                          
         //Cargar archivo CSV
         private IHostingEnvironment Environment;
         public MedicinaController(IHostingEnvironment _environment)
@@ -33,7 +27,7 @@ namespace ListaArtesanal.Controllers
         }
         public IActionResult totalpedidos()
         {
-            return View(Singleton.Instance.ClientesList);
+            return View(Singleton.Instance.clienteslistadata);
             
         }
         public IActionResult IndexVer()
