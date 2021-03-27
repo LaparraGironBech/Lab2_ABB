@@ -63,7 +63,7 @@ namespace ListaArtesanal.Controllers
                     NombreMedicamento = collection["NombreMedicamento"]
 
                 };
-                //Singleton.Instance.ClientesList.AgregarInicio(newPedido);
+                Singleton.Instance.clienteslistadata.Add(newPedido);
                 return RedirectToAction(nameof(totalpedidos));
             }
             catch
@@ -163,7 +163,7 @@ namespace ListaArtesanal.Controllers
                 {
                     Singleton.Instance.ArbolBinario.insertArbol(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
                 }
-                return RedirectToAction(nameof(IndexVer));
+                return RedirectToAction(nameof(Hacerpedido));
             }
             
 
