@@ -58,7 +58,7 @@
     </style>
 
 
-
+    
     <form asp-controller="Medicina" asp-action="Index" method="post" enctype="multipart/form-data">
 
         <input type="file" class="upload-box" name="postedFile" />
@@ -71,83 +71,83 @@
     {
         <hr />
         @*<table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                @foreach (DataColumn dc in Model.Columns)
-                {
-                    <th>@dc.ColumnName</th>
-                }
-            </tr>
-            @foreach (DataRow dr in Model.Rows)
-            {
                 <tr>
                     @foreach (DataColumn dc in Model.Columns)
                     {
-                        <td>@dr[dc.ColumnName]</td>
+                        <th>@dc.ColumnName</th>
                     }
                 </tr>
-            }
-        </table>*@
+                @foreach (DataRow dr in Model.Rows)
+                {
+                    <tr>
+                        @foreach (DataColumn dc in Model.Columns)
+                        {
+                            <td>@dr[dc.ColumnName]</td>
+                        }
+                    </tr>
+                }
+            </table>*@
     }
 
     <h1>IndexVer</h1>
 
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Hacerpedido">Hacer nuevo Pedido</a>
     </p>
     @*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.descripcion)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Casa_Productora)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Precio)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Existencia)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.descripcion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Casa_Productora)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Precio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Existencia)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Casa_Productora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Existencia)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>*@
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Casa_Productora)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Existencia)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
 </body>
 </html>

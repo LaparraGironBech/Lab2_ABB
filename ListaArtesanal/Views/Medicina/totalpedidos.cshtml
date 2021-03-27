@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ListaArtesanal.Models.Clientesdata>
+
+@{
+    ViewData["Title"] = "totalpedidos";
+}
+
+<h1>totalpedidos</h1>
+
+<p>
+    <a asp-action="Hacerpedido">Hacer Otro Pedido</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NIT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreMedicamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidadmedicamento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMedicamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidadmedicamento)
+            </td>
+          
+        </tr>
+}
+    </tbody>
+</table>
