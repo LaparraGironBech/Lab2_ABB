@@ -19,54 +19,54 @@
 <body>
     <style>
         .upload-boximport {
-            font-size: 16px;
-            background: white;
-            border-radius: 50px;
-            box-shadow: 5px 5px 10px black;
+            font-size: 19px;
+            color:white;
+            background: #ff6a10;
+            border-radius: 7px;
+            border:none;
             width: 100px;
-            height: 35px;
+            height: 40px;
             outline: none;
         }
 
         .upload-box {
             font-size: 16px;
             background: white;
-            border-radius: 50px;
-            box-shadow: 5px 5px 10px black;
+            border-radius: 5px;
+           
             width: 300px;
-            height: 35px;
+            height: 40px;
             outline: none;
         }
 
         ::-webkit-file-upload-button {
+            font-size: 19px;
             color: white;
-            background: #206a5d;
+            background: #ff6a10;
             padding: 6px;
             border: none;
-            border-radius: 50px;
-            box-shadow: 1px 0 1px 1px #6b4559;
+            border-radius: 7px;
+           
             outline: none;
         }
 
             ::-webkit-file-upload-button:hover {
-                background: #438a5e;
+                background: #ff6a10;
             }
 
         .upload-boximport:hover {
-            background: #438a5e;
+            background: #ff6a10;
         }
     </style>
 
 
-    
-    <form asp-controller="Medicina" asp-action="Index" method="post" enctype="multipart/form-data">
-
-        <input type="file" class="upload-box" name="postedFile" />
-
-        <input type="submit" class="upload-boximport" value="Import" />
-
-
-    </form>
+ 
+        <h1>Abastecimiento de Medicamentos</h1><br /><br />
+        <form asp-controller="Medicina" asp-action="Index" method="post" enctype="multipart/form-data">
+            <input type="submit" class="upload-boximport" value="Import" />
+            <input type="file" class="upload-box" name="postedFile" />
+        </form>
+   
     @if (Model != null)
     {
         <hr />
@@ -89,10 +89,10 @@
             </table>*@
     }
 
-    <h1>IndexVer</h1>
+  
 
     <p>
-        <a asp-action="Hacerpedido">Hacer nuevo Pedido</a>
+        <!--a asp-action="Hacerpedido">Hacer nuevo Pedido</a-->
     </p>
     @*<table class="table">
             <thead>

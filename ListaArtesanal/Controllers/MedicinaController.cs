@@ -30,6 +30,16 @@ namespace ListaArtesanal.Controllers
             return View(Singleton.Instance.clienteslistadata);
             
         }
+        public ActionResult MenuPrincipal()
+        {
+            return View();
+
+        }
+        public IActionResult VerFarmacos()
+        {
+            return View(Singleton.Instance.ClientesList);
+
+        }
         public IActionResult IndexVer()
         {
             return View();
@@ -65,21 +75,36 @@ namespace ListaArtesanal.Controllers
                 Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,ref hojaComparer,ref siExiste);
                 MedicamentoIndice buscador = hojaComparer.value;
                 int lineaDeBusqueda = buscador.linea-1;
+                double total_a_pagar = 0; ;
                 if (siExiste == false)
                 {
                     //no existe el medicamento
                 }
                 else
                 {
-                    if (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0 || newPedido.Cantidadmedicamento > Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia)
+                    if (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0 && newPedido.Cantidadmedicamento <= Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia)
                     {
-                        double total_a_pagar;
+                        
                         total_a_pagar = (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio) * Convert.ToDouble(newPedido.Cantidadmedicamento);
                         Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia - newPedido.Cantidadmedicamento;
                     }
                     else
                     {
-                        //alerta que no hay medicamento y hay que reabastecer
+                        if(Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0)
+                        {
+                            for(int j= Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia; j>0;j--)
+                            {
+                                total_a_pagar = total_a_pagar + (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio);
+                                Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia--;
+                            }
+                        }
+                        else
+                        {
+                            //alerta que no hay medicamento y hay que reabastecer
+                            Random rand = new Random();
+                            Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = rand.Next(1,15);
+                        }
+
                     }
                 }
                 return RedirectToAction(nameof(totalpedidos));
@@ -181,7 +206,7 @@ namespace ListaArtesanal.Controllers
                 {
                     Singleton.Instance.ArbolBinario.insertArbol(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
                 }
-                return RedirectToAction(nameof(Hacerpedido));
+                return RedirectToAction(nameof(MenuPrincipal));
             }
             
 
