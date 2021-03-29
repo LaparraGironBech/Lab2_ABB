@@ -61,7 +61,27 @@ namespace ListaArtesanal.Controllers
                 Hoja<MedicamentoIndice> hojaComparer =new Hoja<MedicamentoIndice>();                
                 MedicamentoIndice medicamentoComparer = new MedicamentoIndice(newPedido.NombreMedicamento,1);
                 hojaComparer.value = medicamentoComparer;
-                bool existe = Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,hojaComparer);                
+                bool siExiste = false;
+                Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,ref hojaComparer,ref siExiste);
+                MedicamentoIndice buscador = hojaComparer.value;
+                int lineaDeBusqueda = buscador.linea-1;
+                if (siExiste == false)
+                {
+                    //no existe el medicamento
+                }
+                else
+                {
+                    if (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0)
+                    {
+                        double total_a_pagar;
+                        total_a_pagar = (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio) * Convert.ToDouble(newPedido.Cantidadmedicamento);
+                        Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia - newPedido.Cantidadmedicamento;
+                    }
+                    else
+                    {
+                        //alerta que no hay medicamento y hay que reabastecer
+                    }
+                }
                 return RedirectToAction(nameof(totalpedidos));
             }
             catch

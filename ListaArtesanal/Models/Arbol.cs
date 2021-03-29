@@ -13,6 +13,7 @@ namespace ListaArtesanal.Models
         public Arbol()
         {
             raiz = null;
+            existe = false;
         }
         public void insertArbol(T value)
         {
@@ -52,25 +53,25 @@ namespace ListaArtesanal.Models
                 cantidadHojas++;
             }
         }  
-        public bool PreOrden(Hoja<T> r,Hoja<T> medicamento)
+        public void PreOrden(Hoja<T> r,ref Hoja<T> medicamento,ref bool existe)
         {            
-            if (r.value.CompareTo(medicamento) == 0)
+            if (r.value.CompareTo(medicamento.value) == 0)
             {
                 medicamento = r;
-                existe = true;                
+                existe = true;
+                
             }
             else
             {
                 if (r.hojaIzquierda != null)
                 {
-                    PreOrden(r.hojaIzquierda, medicamento);
+                    PreOrden(r.hojaIzquierda,ref medicamento,ref existe);
                 }
                 if (r.hojaDerecha != null)
                 {                  
-                        PreOrden(r.hojaDerecha, medicamento);                    
+                        PreOrden(r.hojaDerecha,ref medicamento,ref existe);                    
                 }
-            }
-            return existe;            
+            }            
         }       
     }
 }
