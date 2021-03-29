@@ -71,7 +71,7 @@ namespace ListaArtesanal.Controllers
                 }
                 else
                 {
-                    if (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0)
+                    if (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0 || newPedido.Cantidadmedicamento > Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia)
                     {
                         double total_a_pagar;
                         total_a_pagar = (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio) * Convert.ToDouble(newPedido.Cantidadmedicamento);
