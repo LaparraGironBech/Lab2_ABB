@@ -170,6 +170,7 @@ namespace ListaArtesanal.Controllers
                                 Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
                                 MedicamentoIndice NodoIndice = new MedicamentoIndice(NodoM[1], Convert.ToInt32(NodoM[0]));
                                 Singleton.Instance.ClientesListIndice.AgregarFinal(NodoIndice);
+                                //asda
                             }
                         }
                     }
