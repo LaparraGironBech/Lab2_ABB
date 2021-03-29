@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<ListaArtesanal.Models.Clientesdata>
 
 @{
-    ViewData["Title"] = "Facturas Pedidos";
+    ViewData["Title"] = "totalpedidos";
 }
 
 <h1>totalpedidos</h1>
 
 <p>
-    <a asp-action="Nueva factura">Create New</a>
+    <a asp-action="Hacerpedido">Hacer Otro Pedido</a>
 </p>
-<table class="table">
+
+    <table class="table table-hover">
+     
     <thead>
         <tr>
             <th>
@@ -27,35 +29,30 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cantidadmedicamento)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cantidadpagar)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NIT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreMedicamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidadmedicamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantidadpagar)
-            </td>
-           
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreMedicamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidadmedicamento)
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>

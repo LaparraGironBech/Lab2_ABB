@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace ListaArtesanal.Models
 {
     public class Clientesdata
@@ -20,6 +19,5 @@ namespace ListaArtesanal.Models
         public string NombreMedicamento { get; set; }
         [Required(ErrorMessage = "Debe ingresar una cantidad de medicina")]
         public int Cantidadmedicamento { get; set; }
-        public double cantidadpagar { get; set; }
     }
 }
