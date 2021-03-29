@@ -78,7 +78,10 @@ namespace ListaArtesanal.Controllers
                 double total_a_pagar = 0; ;
                 if (siExiste == false)
                 {
+                    ModelState.AddModelError("NombreMedicamento", "Ingrese un nombre de medicamento válido");
+                    return View();
                     //no existe el medicamento
+
                 }
                 else
                 {
@@ -92,17 +95,23 @@ namespace ListaArtesanal.Controllers
                     {
                         if(Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia > 0)
                         {
-                            for(int j= Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia; j>0;j--)
+                            ModelState.AddModelError("Cantidadmedicamento", "Cantidad de medicamento superior a la actual");
+                            return View();
+                            for (int j= Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia; j>0;j--)
                             {
                                 total_a_pagar = total_a_pagar + (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio);
                                 Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia--;
                             }
+                            
                         }
                         else
                         {
                             //alerta que no hay medicamento y hay que reabastecer
+
+                            ModelState.AddModelError("Cantidadmedicamento", "Ya no queda más de ese medicamento");
                             Random rand = new Random();
                             Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = rand.Next(1,15);
+                            return View();
                         }
 
                     }
