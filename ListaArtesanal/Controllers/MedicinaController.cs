@@ -72,7 +72,7 @@ namespace ListaArtesanal.Controllers
                 MedicamentoIndice medicamentoComparer = new MedicamentoIndice(newPedido.NombreMedicamento,1);
                 hojaComparer.value = medicamentoComparer;
                 bool siExiste = false;
-                Singleton.Instance.ArbolAvl.Busqueda(Singleton.Instance.ArbolAvl.raiz,ref hojaComparer,ref siExiste);
+                Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,ref hojaComparer,ref siExiste);
                 MedicamentoIndice buscador = hojaComparer.value;
                 int lineaDeBusqueda = buscador.linea-1;
                 double total_a_pagar = 0; ;
@@ -203,7 +203,7 @@ namespace ListaArtesanal.Controllers
                                 Medicamento NodoMedicamento = new Medicamento(Convert.ToInt32(NodoM[0]),NodoM[1], NodoM[2], NodoM[3],Convert.ToDouble(NodoM[4].Remove(0,1)),Convert.ToInt32(NodoM[5]));                                
                                 Singleton.Instance.ClientesList.AgregarFinal(NodoMedicamento);
                                 MedicamentoIndice NodoIndice = new MedicamentoIndice(NodoM[1], Convert.ToInt32(NodoM[0]));
-                                Singleton.Instance.ClientesListIndice.AgregarFinal(NodoIndice);                                
+                                Singleton.Instance.ClientesListIndice.AgregarFinal(NodoIndice);
                             }
                         }
                     }
@@ -213,7 +213,7 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    Singleton.Instance.ArbolAvl.Insertar(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
+                    Singleton.Instance.ArbolBinario.insertArbol(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
                 }
                 return RedirectToAction(nameof(MenuPrincipal));
             }
