@@ -14,7 +14,8 @@ namespace ListaArtesanal.Controllers
 {
     
     public class MedicinaController : Controller
-    {                          
+    {
+        
         //Cargar archivo CSV
         private IHostingEnvironment Environment;
         public MedicinaController(IHostingEnvironment _environment)
@@ -30,6 +31,7 @@ namespace ListaArtesanal.Controllers
             return View(Singleton.Instance.clienteslistadata);
             
         }
+       
         public ActionResult MenuPrincipal()
         {
             return View();
@@ -65,8 +67,10 @@ namespace ListaArtesanal.Controllers
                     Name = collection["Name"],
                     Apellido = collection["Apellido"],
                     NombreMedicamento = collection["NombreMedicamento"],
+                    
+                };
+              
 
-                };                
                 Singleton.Instance.clienteslistadata.Add(newPedido);
                 Hoja<MedicamentoIndice> hojaComparer =new Hoja<MedicamentoIndice>();                
                 MedicamentoIndice medicamentoComparer = new MedicamentoIndice(newPedido.NombreMedicamento,1);
@@ -90,6 +94,8 @@ namespace ListaArtesanal.Controllers
                         
                         total_a_pagar = (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio) * Convert.ToDouble(newPedido.Cantidadmedicamento);
                         Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia - newPedido.Cantidadmedicamento;
+                        Singleton.Instance.totalpagarfactura = total_a_pagar;
+                        newPedido.cantidadpagar = total_a_pagar;
                     }
                     else
                     {
@@ -101,6 +107,8 @@ namespace ListaArtesanal.Controllers
                             {
                                 total_a_pagar = total_a_pagar + (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio);
                                 Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia--;
+                                Singleton.Instance.totalpagarfactura = total_a_pagar;
+                                newPedido.cantidadpagar = total_a_pagar;
                             }
                             
                         }
