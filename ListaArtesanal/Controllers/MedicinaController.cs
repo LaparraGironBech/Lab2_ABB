@@ -90,6 +90,8 @@ namespace ListaArtesanal.Controllers
                         
                         total_a_pagar = (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio) * Convert.ToDouble(newPedido.Cantidadmedicamento);
                         Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia = Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia - newPedido.Cantidadmedicamento;
+                       
+                        newPedido.cantidadpagar = total_a_pagar;
                     }
                     else
                     {
@@ -101,6 +103,7 @@ namespace ListaArtesanal.Controllers
                             {
                                 total_a_pagar = total_a_pagar + (Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Precio);
                                 Singleton.Instance.ClientesList.ObtenerPos(lineaDeBusqueda).Data.Existencia--;
+                                newPedido.cantidadpagar = total_a_pagar;
                             }
                             
                         }
