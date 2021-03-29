@@ -9,8 +9,14 @@ namespace ListaArtesanal.Models
     {
         public int CompareTo(object? obj)
         {
-            MedicamentoIndice value = (MedicamentoIndice)obj;
+            MedicamentoIndice value = (MedicamentoIndice)obj;            
             return nombre.CompareTo(value.nombre);
+        }
+        
+
+        public int DevolverLinea()
+        {
+            return linea;
         }
         public int linea { get; set; } 
         public string nombre { get; set; }

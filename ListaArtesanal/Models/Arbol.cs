@@ -9,7 +9,7 @@ namespace ListaArtesanal.Models
     {
         public Hoja<T> raiz;
         public int cantidadHojas { get; set; }
-
+        bool existe = false;
         public Arbol()
         {
             raiz = null;
@@ -51,6 +51,26 @@ namespace ListaArtesanal.Models
                 }
                 cantidadHojas++;
             }
-        }         
+        }  
+        public bool PreOrden(Hoja<T> r,Hoja<T> medicamento)
+        {            
+            if (r.value.CompareTo(medicamento) == 0)
+            {
+                medicamento = r;
+                existe = true;                
+            }
+            else
+            {
+                if (r.hojaIzquierda != null)
+                {
+                    PreOrden(r.hojaIzquierda, medicamento);
+                }
+                if (r.hojaDerecha != null)
+                {                  
+                        PreOrden(r.hojaDerecha, medicamento);                    
+                }
+            }
+            return existe;            
+        }       
     }
 }

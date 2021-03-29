@@ -45,19 +45,23 @@ namespace ListaArtesanal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Hacerpedido(IFormCollection collection)
-        {
+        {            
             try
             {
                 var newPedido = new Models.Clientesdata
                 {
                     NIT = Convert.ToInt32(collection["NIT"]),
-                    Cantidadmedicamento = Convert.ToInt32(collection["NIT"]),
+                    Cantidadmedicamento = Convert.ToInt32(collection["Cantidadmedicamento"]),
                     Name = collection["Name"],
                     Apellido = collection["Apellido"],
-                    NombreMedicamento = collection["NombreMedicamento"]
+                    NombreMedicamento = collection["NombreMedicamento"],
 
-                };
+                };                
                 Singleton.Instance.clienteslistadata.Add(newPedido);
+                Hoja<MedicamentoIndice> hojaComparer =new Hoja<MedicamentoIndice>();                
+                MedicamentoIndice medicamentoComparer = new MedicamentoIndice(newPedido.NombreMedicamento,1);
+                hojaComparer.value = medicamentoComparer;
+                bool existe = Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,hojaComparer);                
                 return RedirectToAction(nameof(totalpedidos));
             }
             catch
