@@ -12,14 +12,18 @@ namespace ListaArtesanal.Models
         public T value { get; set; }
         public Hoja<T> hojaIzquierda { get; set; }
         public Hoja<T> hojaDerecha { get; set; }
-        
+        public int altura { get; set; }
+        public int FE { get; set; }
+
         public Hoja()
         {
             hojaIzquierda = null;
             hojaDerecha = null;
-           // linea = 0;
-           // nombre = ""; 
-           
+            this.FE = 0;
+            this.altura = 0;
+            // linea = 0;
+            // nombre = ""; 
+
         }
     }
 }
