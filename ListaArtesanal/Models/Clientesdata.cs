@@ -20,5 +20,6 @@ namespace ListaArtesanal.Models
         [Required(ErrorMessage = "Debe ingresar una cantidad de medicina")]
         public int Cantidadmedicamento { get; set; }
         public double cantidadpagar { get; set; }
+        public String FechaDeCompra { get; set; }
     }
 }

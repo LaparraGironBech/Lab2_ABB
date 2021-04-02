@@ -4,10 +4,10 @@
     ViewData["Title"] = "totalpedidos";
 }
 
-<h1>Facturas</h1>
+<h1>Control de ventas</h1>
 
 <p>
-    <a asp-action="Hacerpedido">Crear nueva factura</a>
+    <a asp-action="MenuPrincipal">Home</a>
 </p>
 <table class="table">
     <thead>
@@ -30,34 +30,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.cantidadpagar)
             </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.FechaDeCompra)</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NIT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreMedicamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidadmedicamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantidadpagar)
-            </td>
-            <td>
-             
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreMedicamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidadmedicamento)
+                </td>
+                <td>
+                   $ @Html.DisplayFor(modelItem => item.cantidadpagar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaDeCompra)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

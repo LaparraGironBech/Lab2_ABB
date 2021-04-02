@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ListaArtesanal.Models
 {
-    public class ListaGenerics <T>
+    public class ListaGenerics <T> 
     {
         public class Nodo
         {
@@ -127,9 +128,49 @@ namespace ListaArtesanal.Models
                 }
                 return temp;
             }
-
+            
 
         }
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+           
+        //     return new ListEnum(li);
+        //}
+        //class ListEnum:IEnumerator
+        //{
+        //    public ListaGenerics<T> Arreglo;
+        //    private int position = -1;
+           
+        //    public ListEnum(ListaGenerics<T> Arreglop)
+        //    {
+        //        Arreglo = Arreglop;
+        //    }
+        //    public object Current
+        //    {
+        //        get
+        //        {
+        //            return Arreglo.ObtenerPos(position);
+        //        }
+        //    }
+
+        //    public bool MoveNext()
+        //    {
+        //        position++;
+        //        if (position < Arreglo.Cantidad)
+        //            return true;
+        //        else
+        //            return false;
+                
+        //    }
+
+        //    public void Reset()
+        //    {
+        //        position = -1;
+        //    }
+        //}
+
+        
 
         //Esta es la otra lista que no es generica---------------------------------------------------------->
         //    public Medicamento PrimerMedicamento;
