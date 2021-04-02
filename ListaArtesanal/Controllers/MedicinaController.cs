@@ -74,7 +74,7 @@ namespace ListaArtesanal.Controllers
                 MedicamentoIndice medicamentoComparer = new MedicamentoIndice(newPedido.NombreMedicamento,1);
                 hojaComparer.value = medicamentoComparer;
                 bool siExiste = false;
-                Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz,ref hojaComparer,ref siExiste);
+                Singleton.Instance.ArbolAvl.Busqueda(Singleton.Instance.ArbolAvl.raiz,ref hojaComparer,ref siExiste);
                 MedicamentoIndice buscador = hojaComparer.value;
                 int lineaDeBusqueda = buscador.linea-1;
                 double total_a_pagar = 0; ;
@@ -219,7 +219,7 @@ namespace ListaArtesanal.Controllers
                 //return  View(dt);
                 for (int i = 0; i < 1000; i++)
                 {
-                    Singleton.Instance.ArbolBinario.insertArbol(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
+                    Singleton.Instance.ArbolAvl.Insertar(Singleton.Instance.ClientesListIndice.ObtenerPos(i).Data);                     
                 }
                 return RedirectToAction(nameof(MenuPrincipal));
             }
@@ -255,7 +255,7 @@ namespace ListaArtesanal.Controllers
                 MedicamentoIndice medicamentoComparer = new MedicamentoIndice(Medicamento, 1);
                 hojaComparer.value = medicamentoComparer;
                 bool siExiste = false;
-                Singleton.Instance.ArbolBinario.PreOrden(Singleton.Instance.ArbolBinario.raiz, ref hojaComparer, ref siExiste);
+                Singleton.Instance.ArbolAvl.Busqueda(Singleton.Instance.ArbolAvl.raiz, ref hojaComparer, ref siExiste);
                 MedicamentoIndice buscador = hojaComparer.value;
                 int lineaDeBusqueda = buscador.linea - 1;
                 if (siExiste == false)

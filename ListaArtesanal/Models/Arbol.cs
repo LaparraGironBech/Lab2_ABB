@@ -83,6 +83,7 @@ namespace ListaArtesanal.Models
 
         public void Insertar(T value)
         {
+            cantidadHojas++;
             Hoja<T> nuevaHoja = new Hoja<T>();
             nuevaHoja.value = value;
             nuevaHoja.hojaIzquierda = null;
